@@ -44,23 +44,12 @@ router.get('/shop', (_req, res) => {
 	});
 });
 
-router.get('*', (_req, res) => {
+router.get('*', (req, res) => {
 	// render homepage if given weird URL
 
-	const html = readFileSync(path.join(__dirname, '../views/index.hbs'));
-	const content = parse(html.toString());
-
-	var [css, body, scripts] = [
-		content.querySelector("#css"),
-		content.querySelector("body"),
-		content.querySelector("#scripts")
-	].map(element => element.innerHTML);
-
-	res.render('layouts/layout', {
-		pageTitle: 'Home',
-		css: css.toString(),
-		content: body.toString(),
-		scripts: scripts.toString()
+	res.render('error', {
+		pageTitle: req.originalUrl.slice(1),
+		url: req.originalUrl
 	});
 });
 
