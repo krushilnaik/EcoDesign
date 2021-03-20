@@ -45,8 +45,17 @@ header {
 		header figure figcaption {
 			align-self: center;
 		}
-	header nav {
-		background-color: aqua;
+	header nav a {
+		color: honeydew;
+		text-decoration: none;
+		transition: color .2s;
 	}
+		header nav a:hover {
+			color: cadetblue;
+		}
+			header nav a:not(:last-child)::after {
+				content: "|";
+				margin-left: .3rem;
+			}
 
 /* Footer */
