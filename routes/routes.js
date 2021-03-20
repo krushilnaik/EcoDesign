@@ -6,11 +6,10 @@ const path = require('path');
 
 router.get('/', (_req, res) => {
 	// render homepage
+	console.log('/');
 
 	const html = readFileSync(path.join(__dirname, '../views/index.hbs'));
 	const content = parse(html.toString());
-
-	console.log(process.env.test);
 
 	var [css, body, scripts] = [
 		content.querySelector("#css"),
@@ -27,6 +26,7 @@ router.get('/', (_req, res) => {
 });
 
 router.get('/shop', (_req, res) => {
+	console.log('/shop');
 	// render shop
 
 	const html = readFileSync(path.join(__dirname, '../views/shop.hbs'));
@@ -49,9 +49,12 @@ router.get('/shop', (_req, res) => {
 router.get('*', (req, res) => {
 	// render error page if given weird URL
 
+	const url = req.originalUrl;
+	console.log(url);
+
 	res.render('error', {
-		pageTitle: req.originalUrl.slice(1),
-		url: req.originalUrl
+		pageTitle: url.slice(1).toUpperCase(),
+		url: url
 	});
 });
 
