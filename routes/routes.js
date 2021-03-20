@@ -45,7 +45,7 @@ router.get('/shop', (_req, res) => {
 });
 
 router.get('*', (req, res) => {
-	// render homepage if given weird URL
+	// render error page if given weird URL
 
 	res.render('error', {
 		pageTitle: req.originalUrl.slice(1),
