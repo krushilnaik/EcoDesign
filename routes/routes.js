@@ -10,6 +10,8 @@ router.get('/', (_req, res) => {
 	const html = readFileSync(path.join(__dirname, '../views/index.hbs'));
 	const content = parse(html.toString());
 
+	console.log(process.env.test);
+
 	var [css, body, scripts] = [
 		content.querySelector("#css"),
 		content.querySelector("body"),
