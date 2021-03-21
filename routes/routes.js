@@ -39,7 +39,7 @@ router.get('/shop', (_req, res) => {
 	].map(element => element.innerHTML);
 
 	res.render('layouts/layout', {
-		pageTitle: 'Home',
+		pageTitle: 'Shop',
 		css: css.toString(),
 		content: body.toString(),
 		scripts: scripts.toString()
