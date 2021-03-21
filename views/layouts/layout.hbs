@@ -20,8 +20,29 @@
 		{{!-- Page Header --}}
 		{{> header }}
 
-		{{!-- Page Content --}}
-		{{{ content }}}
+
+		<main>
+			{{!-- TODO: Theme switcher --}}
+
+
+			<!-- PreLoader -->
+			<div class="preloader">
+				<div class="preloader-inner">
+					<div class="preloader-icon">
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Preloading script -->
+			<script>
+				window.onload = function(){$('.preloader').delay(1000).fadeOut('slow');}
+			</script>
+
+			{{!-- Page Content --}}
+			{{{ content }}}
+		</main>
 
 		{{!-- Page Header --}}
 		{{> footer }}
