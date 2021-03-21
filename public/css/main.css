@@ -9,6 +9,10 @@
 }
 
 body {
+	display: grid;
+	grid-template-rows: 3rem auto 2rem;
+	gap: 2%;
+
 	width: 100vw;
 	height: 100vh;
 	max-width: 100%;
@@ -59,3 +63,6 @@ header {
 			}
 
 /* Footer */
+footer {
+	justify-self: center;
+}
