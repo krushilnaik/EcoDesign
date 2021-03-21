@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 require("dotenv").config();
 
-const routes = require('./routes/routes');
+const routes = require('./backend/routes/routes');
 
 // Initialize the application and create my port
 const app = express();
