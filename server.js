@@ -29,5 +29,16 @@ app.engine('hbs', exphbs({
 
 app.set('view engine', 'hbs');
 
+// establish connection to MondoDB
+const MONGO_URI = process.env.MONGO_URI;
+mongoose.connect(MONGO_URI, {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true
+});
+
+const connection = mongoose.connection;
+connection.once('open', () => console.log('Established connection to MongoDB'));
+
 // start my server
 app.listen(PORT, () => console.log(`Started server on PORT: ${PORT}`));
