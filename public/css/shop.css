@@ -94,7 +94,15 @@
 	align-items: center;
 
 	border-radius: 2vmin;
+
+	display: grid;
+	grid-template-columns: 2rem 1fr 2rem;
+	grid-template-rows: 1fr 2rem 1fr;
 }
+	.carousel img {
+		width: 50%;
+		height: 50%;
+	}
 
 .product-name {
 	grid-area: product-name;

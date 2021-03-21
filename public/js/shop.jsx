@@ -1,12 +1,47 @@
 class ImageCarousel extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {activeImage: 0};
+		this.images = this.props.images;
+
+		console.log(this.images);
+	}
+
+	/**
+	 * @param {number} increment 
+	 */
+	clickHandler(increment) {
+		this.setState(
+			{activeImage: this.state.activeImage + increment}
+		);
 	}
 
 	render() {
+		
+		/**
+		 * @type {React.CSSProperties}
+		 */
+		const arrowStyle = {
+			fontSize: "2rem",
+			gridRow: "2 / 3",
+			zIndex: 9000
+		};
+
+		let leftArrow = <i className="fas fa-chevron-circle-left" style={{...arrowStyle, gridColumn: 1}} onClick={() => this.clickHandler(-1)}></i>;
+		let rightArrow = <i className="fas fa-chevron-circle-right"  style={{...arrowStyle, gridColumn: -1}} onClick={() => this.clickHandler(1)}></i>;
+
+		const regex = /file[/]d[/](.+)[/]/;
+		const fileID = this.images[this.state.activeImage].match(regex)[1];
+		const fileURL = `https://drive.google.com/uc?id=${fileID}&export=download`;
+
 		return (
 			<div className="carousel">
-				PLACEHOLDER
+				{this.state.activeImage > 0 ? leftArrow : <span></span>}
+
+				<img src={fileURL} alt={`Image ${this.state.activeImage}`} style={{gridColumn: "1 / -1", gridRow: "1 / -1"}}></img>
+
+				{this.state.activeImage < this.images.length - 1 ? rightArrow : <span></span>}
 			</div>
 		);
 	}
