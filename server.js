@@ -1,5 +1,9 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const cors = require('cors');
+const mongoose = require('mongoose');
+
+require("dotenv").config();
 
 const routes = require('./routes/routes');
 
@@ -8,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // setting up the body parsing for static and routing middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
