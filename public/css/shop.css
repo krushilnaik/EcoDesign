@@ -1,0 +1,139 @@
+
+#shopping {
+	width: 90%;
+	height: 100%;
+	background-color: rgb(255, 127, 127);
+	align-self: center;
+	justify-self: center;
+	margin: auto;
+}
+
+
+.back-arrow {
+	grid-area: back-arrow;
+	width: min-content;
+	height: min-content;
+	color: inherit;
+
+	transition: color .2s;
+
+	font-size: 2rem;
+}
+	.back-arrow:hover {
+		color: rgb(219, 206, 189);
+		cursor: pointer;
+	}
+
+.bullets {
+	grid-area: bullets;
+	color: inherit;
+	list-style-position: inside;
+
+	display: flex;
+	flex-direction: column;
+
+	justify-content: center;
+
+	width: 100%;
+	height: 100%;
+	background-color: blueviolet;
+
+	padding: 3vmin;
+	font-size: 1.35rem;
+}
+
+.price {
+	grid-area: price;
+	color: inherit;
+
+	background-color: rgba(0, 0, 0, .1);
+	padding: 2vmin;
+	width: min-content;
+	height: min-content;
+	font-size: 1.5rem;
+	border-radius: 1vmin;
+
+	justify-self: end;
+	align-self: center;
+}
+
+.add-to-cart {
+	grid-area: add-to-cart;
+	color: inherit;
+
+	padding: 2vmin;
+
+	border-radius: 1.5vmin;
+	border: 2px solid crimson;
+
+	font-size: 1.4rem;
+	height: min-content;
+	width: fit-content;
+
+	align-self: center;
+}
+
+.carousel {
+	grid-area: carousel;
+	align-self: center;
+	justify-self: center;
+	background-color: brown;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	justify-content: center;
+	align-items: center;
+
+	border-radius: 2vmin;
+}
+
+.product-name {
+	grid-area: product-name;
+	align-self: flex-start;
+	justify-self: end;
+
+	font-size: 2rem;
+}
+
+.product-content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 1vmin;
+
+	background-color: tomato;
+
+	grid-area: product-content;
+
+	grid-template-areas: 
+		"bullets bullets"
+		"price add-to-cart"
+	;
+
+	color: inherit;
+
+	width: 100%;
+	height: 100%;
+}
+
+.product-card {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 2.5em auto;
+
+	gap: 2vmin;
+
+	grid-template-areas:
+		"  back-arrow   product-name   "
+		"   carousel  product-content  "
+	;
+
+	width: 100%;
+	height: 100%;
+	color: honeydew;
+
+	padding: 1%
+};
