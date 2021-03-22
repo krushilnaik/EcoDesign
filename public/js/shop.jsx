@@ -18,7 +18,6 @@ class ImageCarousel extends React.Component {
 	}
 
 	render() {
-		
 		/**
 		 * @type {React.CSSProperties}
 		 */

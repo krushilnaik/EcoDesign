@@ -2,10 +2,11 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 
 require("dotenv").config();
 
-const routes = require('./backend/routes/routes');
+const routes = require('./routes/routes');
 
 // Initialize the application and create my port
 const app = express();
@@ -15,19 +16,20 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // bring in routes
 app.use('/', routes);
 
 app.engine('hbs', exphbs({
-	layoutsDir: __dirname + '/views/layouts',
-	partialsDir: __dirname + '/views/partials',
+	layoutsDir: './backend/views/layouts',
+	partialsDir: './backend/views/partials',
 	defaultLayout: 'layout',
 	extname: '.hbs'
 }));
 
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
 // establish connection to MondoDB
 const MONGO_URI = process.env.MONGO_URI;
