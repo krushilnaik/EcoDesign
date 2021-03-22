@@ -3,6 +3,7 @@ const { parse } = require('node-html-parser');
 const { readFileSync } = require('fs');
 const path = require('path');
 
+let Products = require('../models/Product.model');
 
 router.get('/', (_req, res) => {
 	// render homepage
@@ -44,6 +45,11 @@ router.get('/shop', (_req, res) => {
 		content: body.toString(),
 		scripts: scripts.toString()
 	});
+});
+
+router.get('/api/products', (_req, res) => {
+	console.log('received GET request to /api/products');
+	Products.find().then(products => res.json(products));
 });
 
 router.get('*', (req, res) => {
