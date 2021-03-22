@@ -40,6 +40,8 @@ mongoose.connect(MONGO_URI, {
 });
 
 const connection = mongoose.connection;
+
+console.log('Connecting to MongoDB...');
 connection.once('open', () => console.log('Established connection to MongoDB'));
 
 // start my server

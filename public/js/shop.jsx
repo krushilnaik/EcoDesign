@@ -90,9 +90,7 @@ class ProductCard extends React.Component {
 					</ul>
 
 					<span className="price">{`$${this.price.toFixed(2)}`}</span>
-					<button className="add-to-cart">
-						Add to Cart
-					</button>
+					<button className="add-to-cart">Add to Cart</button>
 				</div>
 			</div>
 		);
