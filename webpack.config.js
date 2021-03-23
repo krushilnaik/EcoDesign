@@ -1,9 +1,10 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: path.resolve(__dirname, 'public/js/shop.jsx'),
 	output: {
-		filename: 'shop.bundle.js',
+		filename: 'shop.[contentHash].js',
 		path: path.resolve(__dirname, 'public', 'dist', 'js')
 	},
 	module: {
@@ -17,7 +18,14 @@ module.exports = {
 						presets: ['@babel/preset-env']
 					}
 				}
+			},
+			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader']
 			}
 		]
-	}
+	},
+	plugins: [
+		new HtmlWebpackPlugin()
+	]
 }
