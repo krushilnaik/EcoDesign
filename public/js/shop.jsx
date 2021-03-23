@@ -10,8 +10,14 @@ class ImageCarousel extends React.Component {
 	 * @param {number} increment 
 	 */
 	clickHandler(increment) {
+		// this.setState(
+		// 	{activeImage: this.state.activeImage + increment}
+		// );
+
 		this.setState(
-			{activeImage: this.state.activeImage + increment}
+			prevState => (
+				{activeImage: prevState.activeImage + increment}
+			)
 		);
 	}
 
