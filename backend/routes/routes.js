@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const { parse } = require('node-html-parser');
-const { readFileSync } = require('fs');
-const path = require('path');
 
 let Products = require('../models/Product.model');
 
@@ -9,20 +6,10 @@ router.get('/', (_req, res) => {
 	// render homepage
 	console.log('/');
 
-	const html = readFileSync(path.join(__dirname, '../views/index.hbs'));
-	const content = parse(html.toString());
-
-	var [css, body, scripts] = [
-		content.querySelector("#css"),
-		content.querySelector("body"),
-		content.querySelector("#scripts")
-	].map(element => element.innerHTML);
-
-	res.render('layouts/layout', {
+	res.render('index', {
 		pageTitle: 'Home',
-		css: css.toString(),
-		content: body.toString(),
-		scripts: scripts.toString()
+		styles: ['index.css'],
+		scripts: ['index.js']
 	});
 });
 
@@ -30,20 +17,10 @@ router.get('/shop', (_req, res) => {
 	console.log('/shop');
 	// render shop
 
-	const html = readFileSync(path.join(__dirname, '../views/shop.hbs'));
-	const content = parse(html.toString());
-
-	var [css, body, scripts] = [
-		content.querySelector("#css"),
-		content.querySelector("body"),
-		content.querySelector("#scripts")
-	].map(element => element.innerHTML);
-
-	res.render('layouts/layout', {
+	res.render('shop', {
 		pageTitle: 'Shop',
-		css: css.toString(),
-		content: body.toString(),
-		scripts: scripts.toString()
+		styles: ['shop.css'],
+		scripts: ['shop.jsx']
 	});
 });
 
@@ -59,7 +36,7 @@ router.get('*', (req, res) => {
 	console.log(url);
 
 	res.render('error', {
-		pageTitle: url.slice(1).toUpperCase(),
+		pageTitle: url.slice(1),
 		url: url
 	});
 });

@@ -18,8 +18,15 @@
 		{{!-- Internal CSS --}}
 		<link rel="stylesheet" href="../css/main.css">
 		<link rel="stylesheet" href="../css/preloader.css">
+		{{!-- <link rel="stylesheet" href="../css/{{style}}"> --}}
 
-		{{{ css }}}
+		{{#each styles}}
+			<link rel="stylesheet" href="../css/{{this}}">
+		{{/each}}
+
+		{{!-- {{{ styles }}} --}}
+		{{!-- <script type="text/x-handlebars/template">
+		</script> --}}
 	</head>
 
 	<body>
@@ -47,7 +54,9 @@
 			</script>
 
 			{{!-- Page Content --}}
-			{{{ content }}}
+			{{!-- {{{ content }}} --}}
+
+			{{{ body }}}
 		</main>
 
 		{{!-- Page Header --}}
@@ -59,7 +68,14 @@
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin="anonymous"></script>
 
 		{{!-- Internal JavaScript --}}
-		{{{ scripts }}}
+		{{!-- {{{ scripts }}} --}}
+		{{#each scripts}}
+			{{#isJSX this}}
+				<script type="text/babel" src="../js/{{this}}"></script>
+			{{else}}
+				<script src="../js/{{this}}"></script>
+			{{/isJSX}}
+		{{/each}}
 	</body>
 
 </html>

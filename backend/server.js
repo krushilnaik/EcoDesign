@@ -25,7 +25,15 @@ app.engine('hbs', exphbs({
 	layoutsDir: './backend/views/layouts',
 	partialsDir: './backend/views/partials',
 	defaultLayout: 'layout',
-	extname: '.hbs'
+	extname: '.hbs',
+	helpers: {
+		isJSX: function(/**@type {string}*/ value, options) {
+			const fnTrue = options.fn;
+			const fnFalse = options.inverse;
+
+			return value.endsWith('.jsx') ? fnTrue(this) : fnFalse(this);
+		}
+	}
 }));
 
 app.set('view engine', 'hbs');
