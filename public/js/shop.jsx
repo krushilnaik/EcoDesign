@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 class ImageCarousel extends React.Component {
 	constructor(props) {
 		super(props);
@@ -10,10 +13,6 @@ class ImageCarousel extends React.Component {
 	 * @param {number} increment 
 	 */
 	clickHandler(increment) {
-		// this.setState(
-		// 	{activeImage: this.state.activeImage + increment}
-		// );
-
 		this.setState(
 			prevState => (
 				{activeImage: prevState.activeImage + increment}

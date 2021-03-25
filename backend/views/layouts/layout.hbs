@@ -71,9 +71,9 @@
 		{{!-- {{{ scripts }}} --}}
 		{{#each scripts}}
 			{{#isJSX this}}
-				<script type="text/babel" src="../js/{{this}}"></script>
+				<script type="text/babel" src="../dist/js/{{this}}"></script>
 			{{else}}
-				<script src="../js/{{this}}"></script>
+				<script src="../dist/js/{{this}}"></script>
 			{{/isJSX}}
 		{{/each}}
 	</body>

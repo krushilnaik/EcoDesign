@@ -20,7 +20,7 @@ router.get('/shop', (_req, res) => {
 	res.render('shop', {
 		pageTitle: 'Shop',
 		styles: ['shop.css'],
-		scripts: ['shop.jsx']
+		scripts: ['shop.js']
 	});
 });
 
