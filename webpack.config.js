@@ -30,6 +30,10 @@ module.exports = {
 				use: ['style-loader', 'css-loader']
 			},
 			{
+				test: /\.(?:hbs|handlebars)$/,
+				loader: 'handlebars-loader',
+			},
+			{
 				test: /\.html$/,
 				use: ['html-loader']
 			},
